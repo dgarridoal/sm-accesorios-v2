@@ -13,14 +13,22 @@ class Flurorouter {
 
   //Dashboard router
   static String dashboardRoute = '/dashboard';
+  static String categoryRoute = '/dashboard/categories';
 
   static void configureRoutes() {
     //Auth routes
-    router.define(loginRoute, handler: AdminHandlers.login);
+    router.define(loginRoute,
+        handler: AdminHandlers.login, transitionType: TransitionType.fadeIn);
+    router.define(rootRoute,
+        handler: AdminHandlers.login, transitionType: TransitionType.fadeIn);
 
     //Dashboard routes
-    router.define(dashboardRoute, handler: DashboardHandlers.dashboard);
-
+    router.define(dashboardRoute,
+        handler: DashboardHandlers.dashboard,
+        transitionType: TransitionType.fadeIn);
+    router.define(categoryRoute,
+        handler: DashboardHandlers.categories,
+        transitionType: TransitionType.fadeIn);
     router.notFoundHandler = NotPageFoundHandler.notFoundHandler;
   }
 }

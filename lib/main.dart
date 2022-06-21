@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
 
 import 'package:proyect_sm_accesorios/core/theme/app_theme.dart';
 import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
+import 'package:proyect_sm_accesorios/providers/categories_provider.dart';
+import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
 import 'package:proyect_sm_accesorios/services/local_storage.dart';
 import 'package:proyect_sm_accesorios/services/navigator_service.dart';
+import 'package:proyect_sm_accesorios/services/notification_service.dart';
 import 'package:proyect_sm_accesorios/ui/layouts/auth/auth_layout.dart';
 import 'package:proyect_sm_accesorios/ui/layouts/dashboard/dashboard_layout.dart';
 import 'package:proyect_sm_accesorios/ui/shared/custom_loading_splash.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
+  SMAccesoriosApi.configureDio();
   Flurorouter.configureRoutes();
   runApp(const AppState());
 }
@@ -27,6 +32,11 @@ class AppState extends StatelessWidget {
           create: (_) => AuthProvider(),
           lazy: false,
         ),
+        ChangeNotifierProvider(
+          create: (_) => SidebarProvider(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(create: (_) => CategoriesProvider()),
       ],
       child: const MyApp(),
     );
@@ -44,6 +54,7 @@ class MyApp extends StatelessWidget {
       title: 'S&M Accesorios App',
       initialRoute: Flurorouter.loginRoute,
       navigatorKey: NavigatorService.navigatorKey,
+      scaffoldMessengerKey: NotificationService.scaffoldMessengerKey,
       onGenerateRoute: Flurorouter.router.generator,
       builder: (_, child) {
         final authProvider = Provider.of<AuthProvider>(context);

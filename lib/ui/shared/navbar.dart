@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/cart_bar.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/navbar_avatar.dart';
 
@@ -24,7 +25,11 @@ class Navbar extends StatelessWidget {
       child: Row(
         children: [
           if (size.width < 700)
-            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+            IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  SidebarProvider.openMenu();
+                }),
 
           const SizedBox(width: 20),
           TextFormField(

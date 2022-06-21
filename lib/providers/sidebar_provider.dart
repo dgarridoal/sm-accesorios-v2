@@ -1,12 +1,50 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SidebarProvider extends ChangeNotifier {
-  bool _isSidebarOpen = false;
+  static late AnimationController menuController;
+  static bool isOpen = false;
 
-  bool get isSidebarOpen => _isSidebarOpen;
+  String _currentPage = '';
 
-  void toggleSidebar() {
-    _isSidebarOpen = !_isSidebarOpen;
-    notifyListeners();
+  String get currentPage => _currentPage;
+
+  void setCurrentPage(String routeName) {
+    _currentPage = routeName;
+    Future.delayed(const Duration(milliseconds: 100), () {
+      notifyListeners();
+    });
+  }
+
+  static Animation<double> movement =
+      Tween<double>(begin: -200, end: 0).animate(
+    CurvedAnimation(
+      parent: menuController,
+      curve: Curves.easeInOut,
+    ),
+  );
+
+  static Animation<double> opacity = Tween<double>(begin: 0, end: 1).animate(
+    CurvedAnimation(
+      parent: menuController,
+      curve: Curves.easeInOut,
+    ),
+  );
+
+  static void openMenu() {
+    isOpen = true;
+    menuController.forward();
+  }
+
+  static void closeMenu() {
+    isOpen = false;
+    menuController.reverse();
+  }
+
+  static void toggleMenu() {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   }
 }

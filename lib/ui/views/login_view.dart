@@ -63,6 +63,14 @@ class LoginView extends StatelessWidget {
                   //Contraseña
                   TextFormField(
                     onChanged: (value) => loginFormProvider.password = value,
+                    onFieldSubmitted: (value) {
+                      var isValid = loginFormProvider.validateForm();
+                      if (!isValid) return;
+                      if (isValid) {
+                        authProvider.login(loginFormProvider.email,
+                            loginFormProvider.password);
+                      }
+                    },
                     validator: (value) {
                       if (value!.isEmpty) return 'Ingrese su contraseña';
                       return null;
@@ -81,6 +89,7 @@ class LoginView extends StatelessWidget {
                   CustomButton(
                     onPressed: () {
                       var isValid = loginFormProvider.validateForm();
+                      if (!isValid) return;
                       if (isValid) {
                         authProvider.login(loginFormProvider.email,
                             loginFormProvider.password);

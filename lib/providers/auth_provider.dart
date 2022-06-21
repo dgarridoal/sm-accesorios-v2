@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
+import 'package:proyect_sm_accesorios/models/http/login_response.dart';
+import 'package:proyect_sm_accesorios/models/user_model.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
 import 'package:proyect_sm_accesorios/services/local_storage.dart';
 import 'package:proyect_sm_accesorios/services/navigator_service.dart';
+import 'package:proyect_sm_accesorios/services/notification_service.dart';
 
 enum AuthStatus {
   checking,
@@ -11,37 +15,67 @@ enum AuthStatus {
 }
 
 class AuthProvider extends ChangeNotifier {
-  String? _token;
   AuthStatus authStatus = AuthStatus.checking;
+  User? user;
 
   AuthProvider() {
     isAuthenticated();
   }
 
   Future<bool> isAuthenticated() async {
-    //TODO: Verificar el token con jwt_decoder: ^2.0.1
     final token = LocalStorage.prefs.getString('token');
-    //JwtDecoder.isExpired(token!);
-    if (token == null) {
+
+    if (token != null) {
+      final isExpired = JwtDecoder.isExpired(token);
+      if (isExpired) {
+        authStatus = AuthStatus.notAuthenticated;
+        notifyListeners();
+        return false;
+      }
+
+      user = User.fromJson(LocalStorage.prefs.getString('user')!);
+
+      authStatus = AuthStatus.authenticated;
+      SMAccesoriosApi.configureDio();
+      notifyListeners();
+      return true;
+    } else {
       authStatus = AuthStatus.notAuthenticated;
       notifyListeners();
       return false;
     }
-    //TODO: Backend
-    await Future.delayed(const Duration(milliseconds: 1000));
-
-    authStatus = AuthStatus.authenticated;
-    notifyListeners();
-    return true;
   }
 
   login(String email, String password) async {
-    //TODO: peticion
-    _token = 'lkasjelñaksdjflñaskdjfñlaskdjfaosldjfalksdjflasdjfla';
-    LocalStorage.prefs.setString('token', _token!);
+    final data = {
+      'email': email,
+      'password': password,
+    };
 
-    authStatus = AuthStatus.authenticated;
+    SMAccesoriosApi.httpPost('/auth/login', data).then((json) {
+      NotificationService.showSnackbarSuccess(
+          'Éxito', 'Inicio de sesión exitoso, tenga un buen día');
+      final loginResponse = LoginResponse.fromMap(json);
+      user = loginResponse.user;
+
+      authStatus = AuthStatus.authenticated;
+      LocalStorage.prefs.setString('token', loginResponse.token);
+      LocalStorage.prefs.setString('user', loginResponse.user.toJson());
+
+      NavigatorService.replaceTo(Flurorouter.dashboardRoute);
+      SMAccesoriosApi.configureDio();
+      notifyListeners();
+    }).catchError((error) {
+      NotificationService.showSnackbarError(
+          'Error', 'Error al iniciar sesión, vuelve a intentarlo');
+    });
+  }
+
+  logout() {
+    LocalStorage.prefs.remove('token');
+    LocalStorage.prefs.remove('user');
+    authStatus = AuthStatus.notAuthenticated;
+    user = null;
     notifyListeners();
-    NavigatorService.replaceTo(Flurorouter.dashboardRoute);
   }
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
+import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
+import 'package:proyect_sm_accesorios/router/router.dart';
+import 'package:proyect_sm_accesorios/services/navigator_service.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/logo.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/menu_item.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/text_separator.dart';
@@ -6,8 +11,15 @@ import 'package:proyect_sm_accesorios/ui/shared/widgets/text_separator.dart';
 class Sidebar extends StatelessWidget {
   const Sidebar({Key? key}) : super(key: key);
 
+  void navigateTo(String routeName) {
+    NavigatorService.navigateTo(routeName);
+    SidebarProvider.closeMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final sidebarProvider = Provider.of<SidebarProvider>(context);
+
     return Container(
       width: 200,
       height: double.infinity,
@@ -18,14 +30,28 @@ class Sidebar extends StatelessWidget {
           const Logo(),
           const SizedBox(height: 70),
           const TextSeparator(text: 'Dashboard'),
-          CustomMenuItem(text: 'Inicio', icon: Icons.home, onPressed: () {}),
           CustomMenuItem(
-              text: 'Estadísticas',
-              icon: Icons.analytics_outlined,
-              onPressed: () {}),
+            isActive: sidebarProvider.currentPage == Flurorouter.dashboardRoute,
+            text: 'Inicio',
+            icon: Icons.home,
+            onPressed: () {
+              navigateTo(Flurorouter.dashboardRoute);
+            },
+          ),
+          CustomMenuItem(
+            text: 'Estadísticas',
+            icon: Icons.analytics_outlined,
+            onPressed: () => SidebarProvider.closeMenu(),
+          ),
           const TextSeparator(text: 'Categorías'),
           CustomMenuItem(
-              text: 'Listar', icon: Icons.inventory_outlined, onPressed: () {}),
+              isActive:
+                  sidebarProvider.currentPage == Flurorouter.categoryRoute,
+              text: 'Listar',
+              icon: Icons.inventory_outlined,
+              onPressed: () {
+                navigateTo(Flurorouter.categoryRoute);
+              }),
           CustomMenuItem(text: 'Crear', icon: Icons.add, onPressed: () {}),
           const TextSeparator(text: 'Productos'),
           CustomMenuItem(
@@ -35,7 +61,11 @@ class Sidebar extends StatelessWidget {
           const SizedBox(height: 70),
           const TextSeparator(text: 'Sesión'),
           CustomMenuItem(
-              text: 'Salir', icon: Icons.logout_outlined, onPressed: () {})
+              text: 'Salir',
+              icon: Icons.logout_outlined,
+              onPressed: () {
+                Provider.of<AuthProvider>(context, listen: false).logout();
+              })
         ],
       ),
     );
