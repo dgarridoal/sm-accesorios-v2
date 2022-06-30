@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:proyect_sm_accesorios/models/user_model.dart';
+import 'package:proyect_sm_accesorios/services/local_storage.dart';
 
 class NavbarAvatar extends StatelessWidget {
   const NavbarAvatar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = User.fromJson(LocalStorage.prefs.getString('user')!);
+
     return ClipOval(
       child: SizedBox(
         width: 30,
         height: 30,
-        child: Image.network(
-            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
+        child: Image.network(user.img),
       ),
     );
   }
