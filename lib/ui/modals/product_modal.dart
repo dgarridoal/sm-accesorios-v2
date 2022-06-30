@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/models/category_model.dart';
-import 'package:proyect_sm_accesorios/models/category_product_response.dart';
-import 'package:proyect_sm_accesorios/models/product_model.dart';
-import 'package:proyect_sm_accesorios/providers/category_provider.dart';
-import 'package:proyect_sm_accesorios/providers/product_provider.dart';
+
+import 'package:proyect_sm_accesorios/models/http/index.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/services/navigator_service.dart';
-import 'package:proyect_sm_accesorios/services/notification_service.dart';
-import 'package:proyect_sm_accesorios/ui/cards/white_card.dart';
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
-import 'package:proyect_sm_accesorios/ui/modals/widgets/custom_select_image.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
+import 'package:proyect_sm_accesorios/ui/cards/index.dart';
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
+import 'package:proyect_sm_accesorios/ui/modals/widgets/index.dart';
 
 class ProductModal extends StatefulWidget {
   final Product? product;
@@ -29,8 +28,7 @@ class _ProductModalState extends State<ProductModal> {
   XFile? pickedFile;
   final ImagePicker _picker = ImagePicker();
 
-  bool isSelected(
-      List<CategoriaProductResponse> categories, Category category) {
+  bool isSelected(List<CategoryProductResponse> categories, Category category) {
     for (var cat in categories) {
       if (category.id == cat.id) {
         return true;
@@ -100,7 +98,7 @@ class _ProductModalState extends State<ProductModal> {
             if (value) {
               setState(() {
                 prod!.categoria.add(
-                    CategoriaProductResponse(id: cat.id, nombre: cat.nombre));
+                    CategoryProductResponse(id: cat.id, nombre: cat.nombre));
               });
             } else {
               setState(() {
@@ -315,7 +313,7 @@ class _ProductModalState extends State<ProductModal> {
                           return;
                         }
 
-                        resp != null
+                        resp.id.isNotEmpty
                             ? NotificationService.showSnackbarSuccess('Exitoso',
                                 'Se ha creado el producto correctamente')
                             : NotificationService.showSnackbarError('Error',

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:proyect_sm_accesorios/models/user_model.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
 
 class LoginResponse {
   LoginResponse({

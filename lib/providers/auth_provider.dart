@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import 'package:jwt_decoder/jwt_decoder.dart';
+
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
-import 'package:proyect_sm_accesorios/models/http/login_response.dart';
-import 'package:proyect_sm_accesorios/models/user_model.dart';
+import 'package:proyect_sm_accesorios/models/http/index.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/services/local_storage.dart';
-import 'package:proyect_sm_accesorios/services/navigator_service.dart';
-import 'package:proyect_sm_accesorios/services/notification_service.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
 
 enum AuthStatus {
   checking,

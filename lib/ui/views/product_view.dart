@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/datatables/products_datasource.dart';
-import 'package:proyect_sm_accesorios/providers/product_provider.dart';
+
+import 'package:proyect_sm_accesorios/datatables/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/services/navigator_service.dart';
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
 
 class ProductView extends StatefulWidget {
   const ProductView({Key? key}) : super(key: key);

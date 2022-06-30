@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:proyect_sm_accesorios/models/category_product_response.dart';
+import 'package:proyect_sm_accesorios/models/http/index.dart';
 
 class Product {
   Product({
@@ -18,7 +18,7 @@ class Product {
   });
 
   int stock;
-  List<CategoriaProductResponse> categoria;
+  List<CategoryProductResponse> categoria;
   String nombre;
   String descripcion;
   int precioVenta;
@@ -38,8 +38,8 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
         stock: json["stock"],
-        categoria: List<CategoriaProductResponse>.from(
-            json["categoria"].map((x) => CategoriaProductResponse.fromMap(x))),
+        categoria: List<CategoryProductResponse>.from(
+            json["categoria"].map((x) => CategoryProductResponse.fromMap(x))),
         nombre: json["nombre"],
         descripcion: json["descripcion"],
         precioVenta: json["precioVenta"],

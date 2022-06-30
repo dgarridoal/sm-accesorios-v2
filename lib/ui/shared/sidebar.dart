@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
-import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
+
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/services/navigator_service.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/logo.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/menu_item.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/text_separator.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
+import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({Key? key}) : super(key: key);

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/providers/product_provider.dart';
-import 'package:proyect_sm_accesorios/ui/cards/white_card.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/card_item.dart';
+
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/ui/cards/index.dart';
+import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

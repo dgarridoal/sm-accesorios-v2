@@ -1,7 +1,9 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
+import 'package:dotted_border/dotted_border.dart';
+
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
 
 class CustomSelectImage extends StatelessWidget {
   final XFile? image;

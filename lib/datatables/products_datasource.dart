@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/models/product_model.dart';
-import 'package:proyect_sm_accesorios/providers/product_provider.dart';
+
+import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/services/navigator_service.dart';
-import 'package:proyect_sm_accesorios/services/notification_service.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
 
 class ProductsDataSource extends DataTableSource {
   final List<Product> products;

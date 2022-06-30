@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/cart_bar.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/navbar_avatar.dart';
+
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);

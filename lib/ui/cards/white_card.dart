@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
+
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
 
 class WhiteCard extends StatelessWidget {
   final Widget child;

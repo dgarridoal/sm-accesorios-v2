@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
-import 'package:proyect_sm_accesorios/models/category_product_response.dart';
-import 'package:proyect_sm_accesorios/models/http/product_response.dart';
-import 'package:proyect_sm_accesorios/models/http/products_response.dart';
-import 'package:proyect_sm_accesorios/models/product_model.dart';
+import 'package:proyect_sm_accesorios/models/http/index.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<Product> products = [];

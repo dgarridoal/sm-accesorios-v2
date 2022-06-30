@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/models/category_model.dart';
-import 'package:proyect_sm_accesorios/providers/category_provider.dart';
-import 'package:proyect_sm_accesorios/services/notification_service.dart';
-import 'package:proyect_sm_accesorios/ui/inputs/custom_input_decoration.dart';
+
+import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
+import 'package:proyect_sm_accesorios/ui/inputs/index.dart';
 
 class CategoryModal extends StatefulWidget {
   final Category? category;

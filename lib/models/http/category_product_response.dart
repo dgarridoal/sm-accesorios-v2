@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class CategoriaProductResponse {
-  CategoriaProductResponse({
+class CategoryProductResponse {
+  CategoryProductResponse({
     required this.id,
     required this.nombre,
   });
@@ -9,13 +9,13 @@ class CategoriaProductResponse {
   String id;
   String nombre;
 
-  factory CategoriaProductResponse.fromJson(String str) =>
-      CategoriaProductResponse.fromMap(json.decode(str));
+  factory CategoryProductResponse.fromJson(String str) =>
+      CategoryProductResponse.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory CategoriaProductResponse.fromMap(Map<String, dynamic> json) =>
-      CategoriaProductResponse(
+  factory CategoryProductResponse.fromMap(Map<String, dynamic> json) =>
+      CategoryProductResponse(
         id: json["_id"],
         nombre: json["nombre"],
       );

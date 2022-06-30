@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyect_sm_accesorios/models/user_model.dart';
-import 'package:proyect_sm_accesorios/services/local_storage.dart';
+
+import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/services/index.dart';
 
 class NavbarAvatar extends StatelessWidget {
   const NavbarAvatar({Key? key}) : super(key: key);

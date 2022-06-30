@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
-import 'package:proyect_sm_accesorios/models/category_model.dart';
-import 'package:proyect_sm_accesorios/models/http/categories_response.dart';
-import 'package:proyect_sm_accesorios/models/http/category_response.dart';
+import 'package:proyect_sm_accesorios/models/http/index.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
 
 class CategoryProvider extends ChangeNotifier {
   List<Category> categories = [];

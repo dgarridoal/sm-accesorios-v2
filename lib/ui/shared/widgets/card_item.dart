@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
-import 'package:proyect_sm_accesorios/models/product_model.dart';
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/custom_chip.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/item_counter.dart';
+
+import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
+import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class CardItem extends StatelessWidget {
   final Product product;

@@ -1,16 +1,11 @@
 import 'package:fluro/fluro.dart';
+
 import 'package:provider/provider.dart';
 
-import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
-import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
-
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
-import 'package:proyect_sm_accesorios/ui/modals/product_modal.dart';
-import 'package:proyect_sm_accesorios/ui/views/category_view.dart';
-
-import 'package:proyect_sm_accesorios/ui/views/home_view.dart';
-import 'package:proyect_sm_accesorios/ui/views/login_view.dart';
-import 'package:proyect_sm_accesorios/ui/views/product_view.dart';
+import 'package:proyect_sm_accesorios/ui/modals/index.dart';
+import 'package:proyect_sm_accesorios/ui/views/index.dart';
 
 class DashboardHandlers {
   static Handler dashboard = Handler(

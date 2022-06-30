@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:proyect_sm_accesorios/services/local_storage.dart';
+
+import 'package:proyect_sm_accesorios/services/index.dart';
 
 class SMAccesoriosApi {
   static final Dio _dio = Dio();

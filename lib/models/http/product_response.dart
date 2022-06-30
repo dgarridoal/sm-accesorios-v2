@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:proyect_sm_accesorios/models/product_model.dart';
+import 'package:proyect_sm_accesorios/models/index.dart';
 
 class ProductResponse {
   ProductResponse({

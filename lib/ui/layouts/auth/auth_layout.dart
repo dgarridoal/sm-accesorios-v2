@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyect_sm_accesorios/ui/layouts/auth/widgets/background_login.dart';
+
+import 'package:proyect_sm_accesorios/ui/layouts/auth/widgets/index.dart';
 
 class AuthLayout extends StatelessWidget {
   final Widget child;

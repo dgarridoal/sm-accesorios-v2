@@ -1,9 +1,10 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
-import 'package:proyect_sm_accesorios/providers/login_form_provider.dart';
-import 'package:proyect_sm_accesorios/ui/shared/widgets/custom_button.dart';
+import 'package:email_validator/email_validator.dart';
+
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

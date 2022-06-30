@@ -1,0 +1,10 @@
+export 'package:proyect_sm_accesorios/ui/shared/widgets/card_item.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/cart_bar.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/custom_button.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/custom_chip.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/custom_menu_item.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/item_counter.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/logo.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/navbar_avatar.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/search_field.dart';
+export 'package:proyect_sm_accesorios/ui/shared/widgets/text_separator.dart';

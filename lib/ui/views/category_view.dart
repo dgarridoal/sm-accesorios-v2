@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
-import 'package:proyect_sm_accesorios/datatables/categories_datasource.dart';
-
-import 'package:proyect_sm_accesorios/providers/category_provider.dart';
-
-import 'package:proyect_sm_accesorios/ui/labels/custom_labels.dart';
-import 'package:proyect_sm_accesorios/ui/modals/category_modal.dart';
+import 'package:proyect_sm_accesorios/datatables/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/ui/labels/index.dart';
+import 'package:proyect_sm_accesorios/ui/modals/index.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({Key? key}) : super(key: key);
