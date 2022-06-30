@@ -4,7 +4,8 @@ import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
 
 import 'package:proyect_sm_accesorios/core/theme/app_theme.dart';
 import 'package:proyect_sm_accesorios/providers/auth_provider.dart';
-import 'package:proyect_sm_accesorios/providers/categories_provider.dart';
+import 'package:proyect_sm_accesorios/providers/category_provider.dart';
+import 'package:proyect_sm_accesorios/providers/product_provider.dart';
 import 'package:proyect_sm_accesorios/providers/sidebar_provider.dart';
 import 'package:proyect_sm_accesorios/router/router.dart';
 import 'package:proyect_sm_accesorios/services/local_storage.dart';
@@ -36,7 +37,8 @@ class AppState extends StatelessWidget {
           create: (_) => SidebarProvider(),
           lazy: false,
         ),
-        ChangeNotifierProvider(create: (_) => CategoriesProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: const MyApp(),
     );
