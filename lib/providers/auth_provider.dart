@@ -23,6 +23,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<bool> isAuthenticated() async {
+    authStatus = AuthStatus.checking;
+    notifyListeners();
     final token = LocalStorage.prefs.getString('token');
 
     if (token != null) {
@@ -47,25 +49,26 @@ class AuthProvider extends ChangeNotifier {
   }
 
   login(String email, String password) async {
+    authStatus = AuthStatus.checking;
     final data = {
       'email': email,
       'password': password,
     };
 
     SMAccesoriosApi.httpPost('/auth/login', data).then((json) {
+      authStatus = AuthStatus.authenticated;
       NotificationService.showSnackbarSuccess(
           'Éxito', 'Inicio de sesión exitoso, tenga un buen día');
       final loginResponse = LoginResponse.fromMap(json);
       user = loginResponse.user;
 
-      authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', loginResponse.token);
       LocalStorage.prefs.setString('user', loginResponse.user.toJson());
-
       NavigatorService.replaceTo(Flurorouter.dashboardRoute);
       SMAccesoriosApi.configureDio();
       notifyListeners();
     }).catchError((error) {
+      authStatus = AuthStatus.notAuthenticated;
       NotificationService.showSnackbarError(
           'Error', 'Error al iniciar sesión, vuelve a intentarlo');
     });
