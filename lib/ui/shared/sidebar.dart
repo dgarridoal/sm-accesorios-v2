@@ -43,21 +43,22 @@ class Sidebar extends StatelessWidget {
             icon: Icons.analytics_outlined,
             onPressed: () => SidebarProvider.closeMenu(),
           ),
-          const TextSeparator(text: 'Categorías'),
           CustomMenuItem(
               isActive:
                   sidebarProvider.currentPage == Flurorouter.categoryRoute,
-              text: 'Listar',
-              icon: Icons.inventory_outlined,
+              text: 'Categorías',
+              icon: Icons.view_in_ar_outlined,
               onPressed: () {
                 navigateTo(Flurorouter.categoryRoute);
               }),
-          CustomMenuItem(text: 'Crear', icon: Icons.add, onPressed: () {}),
-          const TextSeparator(text: 'Productos'),
           CustomMenuItem(
-              text: 'Listar', icon: Icons.list_outlined, onPressed: () {}),
-          CustomMenuItem(
-              text: 'Crear', icon: Icons.add_outlined, onPressed: () {}),
+            text: 'Productos',
+            icon: Icons.local_mall_outlined,
+            onPressed: () {
+              navigateTo(Flurorouter.productsRoute);
+            },
+            isActive: sidebarProvider.currentPage == Flurorouter.productsRoute,
+          ),
           const SizedBox(height: 70),
           const TextSeparator(text: 'Sesión'),
           CustomMenuItem(

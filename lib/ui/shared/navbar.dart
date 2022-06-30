@@ -30,7 +30,6 @@ class Navbar extends StatelessWidget {
                 onPressed: () {
                   SidebarProvider.openMenu();
                 }),
-
           const SizedBox(width: 20),
           TextFormField(
             decoration: const InputDecoration(
@@ -50,7 +49,6 @@ class Navbar extends StatelessWidget {
             height: 25,
             color: Colors.black,
           ),
-          //TODO: Reemplazar por el icono de usuario
           const NavbarAvatar(),
           const SizedBox(width: 10),
         ],

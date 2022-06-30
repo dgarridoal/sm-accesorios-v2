@@ -7,4 +7,12 @@ class CustomLabels {
     fontWeight: FontWeight.w600,
     color: Colors.black,
   );
+  static TextStyle h2 = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
+  static TextStyle subTitle1 = GoogleFonts.poppins(
+    color: Colors.black54,
+  );
 }
