@@ -7,6 +7,7 @@ class User {
     required this.email,
     required this.createdAt,
     required this.updatedAt,
+    required this.img,
     required this.id,
   });
 
@@ -15,6 +16,7 @@ class User {
   String email;
   DateTime createdAt;
   DateTime updatedAt;
+  String img;
   String id;
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
@@ -27,6 +29,8 @@ class User {
         email: json["email"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        img: json["img"] ??
+            'https://sm-accesorios-backend.herokuapp.com/api/upload/admin/value',
         id: json["id"],
       );
 
@@ -36,6 +40,7 @@ class User {
         "email": email,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
+        "img": img,
         "id": id,
       };
 }
