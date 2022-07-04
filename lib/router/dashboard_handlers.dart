@@ -22,6 +22,34 @@ class DashboardHandlers {
       }
     },
   );
+  static Handler statistics = Handler(
+    handlerFunc: (context, parameters) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+
+      Provider.of<SidebarProvider>(context, listen: false)
+          .setCurrentPage(Flurorouter.statisticsRoute);
+
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        return const StatisticsView();
+      } else {
+        return const LoginView();
+      }
+    },
+  );
+  static Handler search = Handler(
+    handlerFunc: (context, parameters) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+
+      Provider.of<SidebarProvider>(context, listen: false)
+          .setCurrentPage(Flurorouter.searchRoute);
+
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        return const SearchView();
+      } else {
+        return const LoginView();
+      }
+    },
+  );
   static Handler categories = Handler(
     handlerFunc: (context, parameters) {
       final authProvider = Provider.of<AuthProvider>(context!);

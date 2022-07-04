@@ -28,44 +28,47 @@ class Sidebar extends StatelessWidget {
         children: [
           const Logo(),
           const SizedBox(height: 70),
+          CustomMenuItem(
+            isActive: sidebarProvider.currentPage == Flurorouter.searchRoute,
+            text: 'Buscar',
+            icon: Icons.search_outlined,
+            onPressed: () => navigateTo(Flurorouter.searchRoute),
+          ),
+          const SizedBox(height: 70),
           const TextSeparator(text: 'Dashboard'),
           CustomMenuItem(
             isActive: sidebarProvider.currentPage == Flurorouter.dashboardRoute,
             text: 'Inicio',
             icon: Icons.home,
-            onPressed: () {
-              navigateTo(Flurorouter.dashboardRoute);
-            },
+            onPressed: () => navigateTo(Flurorouter.dashboardRoute),
           ),
           CustomMenuItem(
+            isActive:
+                sidebarProvider.currentPage == Flurorouter.statisticsRoute,
             text: 'Estadísticas',
             icon: Icons.analytics_outlined,
-            onPressed: () => SidebarProvider.closeMenu(),
+            onPressed: () => navigateTo(Flurorouter.statisticsRoute),
           ),
           CustomMenuItem(
-              isActive:
-                  sidebarProvider.currentPage == Flurorouter.categoryRoute,
-              text: 'Categorías',
-              icon: Icons.view_in_ar_outlined,
-              onPressed: () {
-                navigateTo(Flurorouter.categoryRoute);
-              }),
+            isActive: sidebarProvider.currentPage == Flurorouter.categoryRoute,
+            text: 'Categorías',
+            icon: Icons.view_in_ar_outlined,
+            onPressed: () => navigateTo(Flurorouter.categoryRoute),
+          ),
           CustomMenuItem(
+            isActive: sidebarProvider.currentPage == Flurorouter.productsRoute,
             text: 'Productos',
             icon: Icons.local_mall_outlined,
-            onPressed: () {
-              navigateTo(Flurorouter.productsRoute);
-            },
-            isActive: sidebarProvider.currentPage == Flurorouter.productsRoute,
+            onPressed: () => navigateTo(Flurorouter.productsRoute),
           ),
           const SizedBox(height: 70),
           const TextSeparator(text: 'Sesión'),
           CustomMenuItem(
-              text: 'Salir',
-              icon: Icons.logout_outlined,
-              onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false).logout();
-              })
+            text: 'Salir',
+            icon: Icons.logout_outlined,
+            onPressed: () =>
+                Provider.of<AuthProvider>(context, listen: false).logout(),
+          )
         ],
       ),
     );

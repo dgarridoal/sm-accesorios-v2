@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
 class Navbar extends StatelessWidget {
@@ -8,7 +7,6 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -23,25 +21,8 @@ class Navbar extends StatelessWidget {
       ),
       height: 50,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          if (size.width < 700)
-            IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  SidebarProvider.openMenu();
-                }),
-          const SizedBox(width: 20),
-          TextFormField(
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              icon: Icon(Icons.search),
-              hintText: 'Buscar',
-              constraints: BoxConstraints(
-                maxWidth: 200,
-              ),
-            ),
-          ),
-          const Spacer(),
           const CartBar(),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),

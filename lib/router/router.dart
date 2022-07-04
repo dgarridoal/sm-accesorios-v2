@@ -9,17 +9,26 @@ class Flurorouter {
 
   static String rootRoute = '/';
 
+  // Search
+  static String searchRoute = '/dashboard/search';
+
   //Auth router
   static String loginRoute = '/auth/login';
 
   //Dashboard router
   static String dashboardRoute = '/dashboard';
+  static String statisticsRoute = '/dashboard/statistics';
   static String categoryRoute = '/dashboard/categories';
   static String productsRoute = '/dashboard/products';
   static String productsNewRoute = '/dashboard/products/new';
   static String productViewRoute = '/dashboard/products/view/:id';
 
   static void configureRoutes() {
+    //Search routes
+    router.define(searchRoute,
+        handler: DashboardHandlers.search,
+        transitionType: TransitionType.fadeIn);
+
     //Auth routes
     router.define(loginRoute,
         handler: AdminHandlers.login, transitionType: TransitionType.fadeIn);
@@ -29,6 +38,10 @@ class Flurorouter {
     //Dashboard routes
     router.define(dashboardRoute,
         handler: DashboardHandlers.dashboard,
+        transitionType: TransitionType.fadeIn);
+
+    router.define(statisticsRoute,
+        handler: DashboardHandlers.statistics,
         transitionType: TransitionType.fadeIn);
 
     router.define(categoryRoute,
