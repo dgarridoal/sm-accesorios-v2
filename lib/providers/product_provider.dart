@@ -16,12 +16,14 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  searchProduct(Product product) {
-    products.map((prod) {
-      if (prod.id == product.id) {
-        return product;
-      }
-    });
+  Future<Product> getProductById(String id) async {
+    try {
+      final resp = await SMAccesoriosApi.httpGet('/product/$id');
+      final productResponse = ProductResponse.fromMap(resp);
+      return productResponse.product;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<Product> newProduct(Product product) async {
@@ -61,34 +63,15 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
-  Future<bool> updateProduct(Product product) async {
+  Future<Product> updateProduct(Product product) async {
     try {
-      final data = {
-        'categoria': [product.categoria],
-        'stock': product.stock,
-        'nombre': product.nombre,
-        'descripcion': product.descripcion,
-        'precioVenta': product.precioVenta,
-        'precioCompra': product.precioCompra,
-        'fechaVencimiento': product.fechaVencimiento,
-        'id': product.id
-      };
-      // ignore: unused_local_variable
-      final resp =
-          await SMAccesoriosApi.httpPut('/product/${product.id}', data);
-
-      products = products.map((prod) {
-        if (prod.id != product.id) {
-          return prod;
-        }
-        prod = prod;
-        return prod;
-      }).toList();
-
-      notifyListeners();
-      return true;
+      final resp = await SMAccesoriosApi.httpPut(
+          '/product/${product.id}', product.toMap());
+      final productResponse = ProductResponse.fromMap(resp);
+      final prod = productResponse.product;
+      return prod;
     } catch (e) {
-      return false;
+      rethrow;
     }
   }
 

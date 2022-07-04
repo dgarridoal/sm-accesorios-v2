@@ -55,10 +55,28 @@ class DashboardHandlers {
       final authProvider = Provider.of<AuthProvider>(context!);
 
       Provider.of<SidebarProvider>(context, listen: false)
-          .setCurrentPage(Flurorouter.productViewRoute);
+          .setCurrentPage(Flurorouter.productsRoute);
 
       if (authProvider.authStatus == AuthStatus.authenticated) {
-        return const ProductModal();
+        if (parameters['id']?.first != null) {
+          return ProductModal(id: parameters['id']!.first);
+        } else {
+          return const ProductView();
+        }
+      } else {
+        return const LoginView();
+      }
+    },
+  );
+  static Handler productNew = Handler(
+    handlerFunc: (context, parameters) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+
+      Provider.of<SidebarProvider>(context, listen: false)
+          .setCurrentPage(Flurorouter.productsRoute);
+
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        return const ProductNewModal();
       } else {
         return const LoginView();
       }

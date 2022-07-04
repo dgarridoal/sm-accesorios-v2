@@ -55,7 +55,7 @@ class _ProductViewState extends State<ProductView> {
                   style: TextStyle(color: Colors.purple),
                 ),
                 onPressed: () {
-                  NavigatorService.navigateTo(Flurorouter.productViewRoute);
+                  NavigatorService.navigateTo(Flurorouter.productsNewRoute);
                 },
               ),
             ],

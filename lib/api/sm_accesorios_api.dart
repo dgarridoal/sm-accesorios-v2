@@ -28,7 +28,7 @@ class SMAccesoriosApi {
       final resp = await _dio.post(path, data: formData);
       return resp.data;
     } catch (e) {
-      throw ('Error al obtener los datos');
+      throw ('Error al crear los datos');
     }
   }
 
@@ -38,7 +38,7 @@ class SMAccesoriosApi {
       final resp = await _dio.put(path, data: formData);
       return resp.data;
     } catch (e) {
-      rethrow;
+      throw ('Error al actualizar los datos');
     }
   }
 
@@ -48,7 +48,7 @@ class SMAccesoriosApi {
       final resp = await _dio.delete(path, data: formData);
       return resp.data;
     } catch (e) {
-      throw ('Error al obtener los datos');
+      throw ('Error al borrar los datos');
     }
   }
 }

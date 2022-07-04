@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import 'package:proyect_sm_accesorios/models/index.dart';
 import 'package:proyect_sm_accesorios/providers/index.dart';
-import 'package:proyect_sm_accesorios/router/router.dart';
 import 'package:proyect_sm_accesorios/services/index.dart';
 
 class ProductsDataSource extends DataTableSource {
@@ -26,7 +25,8 @@ class ProductsDataSource extends DataTableSource {
           children: [
             IconButton(
                 onPressed: () {
-                  NavigatorService.navigateTo(Flurorouter.productViewRoute);
+                  NavigatorService.replaceTo(
+                      '/dashboard/products/view/${product.id}');
                 },
                 icon: const Icon(
                   Icons.edit_outlined,

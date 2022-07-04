@@ -16,7 +16,8 @@ class Flurorouter {
   static String dashboardRoute = '/dashboard';
   static String categoryRoute = '/dashboard/categories';
   static String productsRoute = '/dashboard/products';
-  static String productViewRoute = '/dashboard/products/view';
+  static String productsNewRoute = '/dashboard/products/new';
+  static String productViewRoute = '/dashboard/products/view/:id';
 
   static void configureRoutes() {
     //Auth routes
@@ -42,6 +43,9 @@ class Flurorouter {
         handler: DashboardHandlers.productView,
         transitionType: TransitionType.fadeIn);
 
+    router.define(productsNewRoute,
+        handler: DashboardHandlers.productNew,
+        transitionType: TransitionType.fadeIn);
     router.notFoundHandler = NotPageFoundHandler.notFoundHandler;
   }
 }
