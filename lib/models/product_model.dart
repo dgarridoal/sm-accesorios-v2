@@ -29,8 +29,9 @@ class Product {
   DateTime updatedAt;
   String id;
 
-  get imgUrl =>
-      'https://sm-accesorios-backend.herokuapp.com/api/upload/products/$img';
+  get imgUrl => !img.contains('http')
+      ? 'https://sm-accesorios-backend.herokuapp.com/api/upload/products/$img'
+      : img;
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
@@ -53,7 +54,7 @@ class Product {
 
   Map<String, dynamic> toMap() => {
         "stock": stock,
-        "categoria": List<dynamic>.from(categoria.map((x) => x.toMap())),
+        "categoria": List<String>.from(categoria.map((x) => x.id)),
         "nombre": nombre,
         "descripcion": descripcion,
         "precioVenta": precioVenta,

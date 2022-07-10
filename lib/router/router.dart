@@ -22,6 +22,7 @@ class Flurorouter {
   static String productsRoute = '/dashboard/products';
   static String productsNewRoute = '/dashboard/products/new';
   static String productViewRoute = '/dashboard/products/view/:id';
+  static String cartRoute = '/dashboard/cart';
 
   static void configureRoutes() {
     //Search routes
@@ -59,6 +60,10 @@ class Flurorouter {
     router.define(productsNewRoute,
         handler: DashboardHandlers.productNew,
         transitionType: TransitionType.fadeIn);
+
+    router.define(cartRoute,
+        handler: DashboardHandlers.cart, transitionType: TransitionType.fadeIn);
+
     router.notFoundHandler = NotPageFoundHandler.notFoundHandler;
   }
 }

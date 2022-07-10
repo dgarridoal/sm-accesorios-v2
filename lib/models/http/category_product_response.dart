@@ -21,7 +21,7 @@ class CategoryProductResponse {
       );
 
   Map<String, dynamic> toMap() => {
-        "_id": id,
+        "id": id,
         "nombre": nombre,
       };
 }

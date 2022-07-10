@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:proyect_sm_accesorios/providers/index.dart';
 import 'package:proyect_sm_accesorios/ui/labels/index.dart';
 import 'package:proyect_sm_accesorios/ui/shared/widgets/index.dart';
 
@@ -15,6 +17,7 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Row(
       children: [
         Container(
@@ -54,13 +57,6 @@ class CardItem extends StatelessWidget {
               height: 20,
             ),
             Text('Disponibilidad: ${product.stock}'),
-            product.stock >= 1
-                ? ItemCounter(
-                    removeOnpressed: () {},
-                    counter: 1,
-                    addOnPressed: () {},
-                  )
-                : Container(),
           ],
         ),
         const Spacer(),
@@ -83,7 +79,9 @@ class CardItem extends StatelessWidget {
             ),
             product.stock >= 1
                 ? ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cartProvider.addToCart(product);
+                    },
                     child: Row(
                       children: const [
                         Icon(Icons.shopping_cart_outlined),

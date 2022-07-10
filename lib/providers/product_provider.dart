@@ -8,6 +8,14 @@ import 'package:proyect_sm_accesorios/models/index.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<Product> products = [];
+  String _search = '';
+
+  set searchText(String value) {
+    _search = value;
+    notifyListeners();
+  }
+
+  get search => _search;
 
   Future<void> getProducts() async {
     final resp = await SMAccesoriosApi.httpGet('/product');

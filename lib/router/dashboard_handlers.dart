@@ -110,4 +110,22 @@ class DashboardHandlers {
       }
     },
   );
+  static Handler cart = Handler(
+    handlerFunc: (context, parameters) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+      final cartProvider = Provider.of<CartProvider>(context);
+      Provider.of<SidebarProvider>(context, listen: false)
+          .setCurrentPage(Flurorouter.cartRoute);
+
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        if (cartProvider.items.isEmpty) {
+          return const HomeView();
+        } else {
+          return const CartView();
+        }
+      } else {
+        return const LoginView();
+      }
+    },
+  );
 }

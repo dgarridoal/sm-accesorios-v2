@@ -1,3 +1,5 @@
+export 'package:proyect_sm_accesorios/ui/views/cart_view.dart';
+export 'package:proyect_sm_accesorios/ui/views/profile_view.dart';
 export 'package:proyect_sm_accesorios/ui/views/statistics_view.dart';
 export 'package:proyect_sm_accesorios/ui/views/search_view.dart';
 export 'package:proyect_sm_accesorios/ui/views/blank_view.dart';
