@@ -35,6 +35,7 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(
           create: (_) => CartProvider(),
           lazy: false,

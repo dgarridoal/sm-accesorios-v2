@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:proyect_sm_accesorios/models/index.dart';
+import 'package:provider/provider.dart';
+
+import 'package:proyect_sm_accesorios/providers/index.dart';
+import 'package:proyect_sm_accesorios/router/router.dart';
 import 'package:proyect_sm_accesorios/services/index.dart';
 
 class NavbarAvatar extends StatelessWidget {
@@ -8,13 +11,16 @@ class NavbarAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = User.fromJson(LocalStorage.prefs.getString('user')!);
+    final user = Provider.of<UserProvider>(context).user;
 
-    return ClipOval(
-      child: SizedBox(
-        width: 30,
-        height: 30,
-        child: Image.network(user.img),
+    return InkWell(
+      onTap: () => NavigatorService.navigateTo(Flurorouter.profileRoute),
+      child: ClipOval(
+        child: SizedBox(
+          width: 30,
+          height: 30,
+          child: Image.network(user.imgUrl),
+        ),
       ),
     );
   }

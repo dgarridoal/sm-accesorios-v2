@@ -1,3 +1,4 @@
+export 'package:proyect_sm_accesorios/providers/user_provider.dart';
 export 'package:proyect_sm_accesorios/providers/cart_provider.dart';
 export 'package:proyect_sm_accesorios/providers/auth_provider.dart';
 export 'package:proyect_sm_accesorios/providers/category_provider.dart';

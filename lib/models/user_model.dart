@@ -19,6 +19,9 @@ class User {
   String img;
   String id;
 
+  get imgUrl =>
+      'https://sm-accesorios-backend.herokuapp.com/api/upload/products/$img';
+
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
@@ -29,8 +32,7 @@ class User {
         email: json["email"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
-        img: json["img"] ??
-            'https://sm-accesorios-backend.herokuapp.com/api/upload/admin/value',
+        img: json["img"] ?? 'no-image.png',
         id: json["id"],
       );
 

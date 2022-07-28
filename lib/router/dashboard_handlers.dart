@@ -128,4 +128,17 @@ class DashboardHandlers {
       }
     },
   );
+  static Handler profile = Handler(
+    handlerFunc: (context, parameters) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+      Provider.of<SidebarProvider>(context, listen: false)
+          .setCurrentPage(Flurorouter.profileRoute);
+
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        return const ProfileView();
+      } else {
+        return const LoginView();
+      }
+    },
+  );
 }

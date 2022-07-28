@@ -24,7 +24,6 @@ class AuthProvider extends ChangeNotifier {
 
   Future<bool> isAuthenticated() async {
     authStatus = AuthStatus.checking;
-    notifyListeners();
     final token = LocalStorage.prefs.getString('token');
 
     if (token != null) {
@@ -68,6 +67,7 @@ class AuthProvider extends ChangeNotifier {
       SMAccesoriosApi.configureDio();
       notifyListeners();
     }).catchError((error) {
+      print(error);
       authStatus = AuthStatus.notAuthenticated;
       NotificationService.showSnackbarError(
           'Error', 'Error al iniciar sesión, vuelve a intentarlo');
