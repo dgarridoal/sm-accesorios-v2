@@ -53,10 +53,10 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           const SizedBox(height: 30),
                           TextFormField(
+                            initialValue: user.nombre,
                             enabled: userProvider.isEditable,
                             onChanged: ((value) => user.nombre = value),
                             decoration: InputDecoration(
-                              hintText: user.nombre,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -64,10 +64,10 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           const SizedBox(height: 30),
                           TextFormField(
+                            initialValue: user.apellido,
                             enabled: userProvider.isEditable,
                             onChanged: ((value) => user.apellido = value),
                             decoration: InputDecoration(
-                              hintText: user.apellido,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -75,10 +75,10 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           const SizedBox(height: 30),
                           TextFormField(
+                            initialValue: user.email,
                             enabled: userProvider.isEditable,
                             onChanged: ((value) => user.email = value),
                             decoration: InputDecoration(
-                              hintText: user.email,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),

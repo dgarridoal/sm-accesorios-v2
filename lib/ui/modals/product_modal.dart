@@ -73,9 +73,9 @@ class _ProductModalState extends State<ProductModal> {
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     TextFormField(
+                      initialValue: prod?.nombre,
                       onChanged: ((value) => prod?.nombre = value),
                       decoration: InputDecoration(
-                        hintText: prod?.nombre ?? 'Nombre del producto',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -106,11 +106,11 @@ class _ProductModalState extends State<ProductModal> {
                     ),
                     const SizedBox(height: 15),
                     TextFormField(
+                      initialValue: prod?.descripcion,
                       minLines: 5,
                       maxLines: 5,
                       onChanged: (value) => prod?.descripcion = value,
                       decoration: InputDecoration(
-                        hintText: prod?.descripcion ?? 'Descripción',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -127,10 +127,10 @@ class _ProductModalState extends State<ProductModal> {
                         ),
                         const SizedBox(width: 8),
                         TextFormField(
+                          initialValue: '${prod?.stock}',
                           onChanged: (value) => prod?.stock = int.parse(value),
                           decoration: InputDecoration(
                             constraints: const BoxConstraints(maxWidth: 100),
-                            hintText: '${prod?.stock}',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -145,11 +145,11 @@ class _ProductModalState extends State<ProductModal> {
                         ),
                         const SizedBox(width: 8),
                         TextFormField(
+                          initialValue: '${prod?.precioCompra}',
                           onChanged: (value) =>
                               prod?.precioCompra = int.parse(value),
                           decoration: InputDecoration(
                             constraints: const BoxConstraints(maxWidth: 100),
-                            hintText: '${prod?.precioCompra}',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -164,11 +164,11 @@ class _ProductModalState extends State<ProductModal> {
                         ),
                         const SizedBox(width: 8),
                         TextFormField(
+                          initialValue: '${prod?.precioVenta}',
                           onChanged: (value) =>
                               prod?.precioVenta = int.parse(value),
                           decoration: InputDecoration(
                             constraints: const BoxConstraints(maxWidth: 100),
-                            hintText: '${prod?.precioVenta}',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
