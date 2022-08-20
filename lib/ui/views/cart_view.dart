@@ -173,7 +173,17 @@ class CartView extends StatelessWidget {
                               width: 1,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            final resp = await cartProvider.payment();
+                            if (resp) {
+                              NotificationService.showSnackbarSuccess(
+                                  'Venta realizada',
+                                  'Se ha realizado correctamente la venta');
+                            } else {
+                              NotificationService.showSnackbarError(
+                                  'Error', 'No se ha podido realizar la venta');
+                            }
+                          },
                           icon:
                               const Icon(Icons.shopping_cart_checkout_outlined),
                           label: const Text('Hacer compra'),

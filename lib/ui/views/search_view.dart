@@ -26,7 +26,6 @@ class SearchView extends StatelessWidget {
           const SizedBox(height: 20),
           WhiteCard(
             child: TextFormField(
-              //TODO: Crear diseño de buscador
               decoration: const InputDecoration(
                 label: Text('Buscar'),
               ),

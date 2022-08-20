@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:proyect_sm_accesorios/models/http/index.dart';
 
 import 'package:proyect_sm_accesorios/models/index.dart';
 
+import '../services/index.dart';
+
 class CartProvider extends ChangeNotifier {
   List<CartItemModel> items = [];
+  List<OrderItemRequest> itemsRequest = [];
 
   get totalCount => items.length;
 
@@ -15,8 +22,65 @@ class CartProvider extends ChangeNotifier {
       imagen: product.imgUrl,
       stock: product.stock,
     );
-    items.add(item);
+    var band = false;
+
+    items.map((i) {
+      if (i.id == item.id) {
+        i.quantity = item.quantity;
+        band = true;
+      }
+    });
+
+    if (!band) {
+      items.add(item);
+    }
     notifyListeners();
+  }
+
+  convertCartToOrder() {
+    for (var item in items) {
+      final order = OrderItemRequest(
+          cantidad: item.quantity,
+          precio: item.precio,
+          idProducto: item.id,
+          nombre: item.nombre,
+          img: item.imagen);
+      itemsRequest.add(order);
+    }
+  }
+
+  Future<bool> payment() async {
+    try {
+      convertCartToOrder();
+      final data = OrderRequest(
+              orderItems: [...itemsRequest],
+              nroItems: totalCountItem(),
+              total: totalPrice())
+          .toMap();
+      /* final resp = await SMAccesoriosApi.httpPost('/order/payment', data);
+
+      final orderResponse = OrderResponse.fromMap(resp); */
+
+      var url = Uri.parse(
+          'https:sm-accesorios-backend.herokuapp.com/api/order/payment');
+
+      final resp = await http.post(url, body: jsonEncode(data), headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'x-token': LocalStorage.prefs.getString('token') ?? '',
+        'Content-Type': 'application/json',
+      });
+
+      if (resp.statusCode == 200) {
+        items.clear();
+        notifyListeners();
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      itemsRequest.clear();
+      return false;
+    }
   }
 
   int totalPrice() {

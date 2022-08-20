@@ -33,9 +33,15 @@ class AppState extends StatelessWidget {
           create: (_) => SidebarProvider(),
           lazy: false,
         ),
-        ChangeNotifierProvider(create: (_) => CategoryProvider()),
-        ChangeNotifierProvider(create: (_) => ProductProvider()),
-        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(
+          create: (_) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
         ChangeNotifierProvider(
           create: (_) => CartProvider(),
           lazy: false,
@@ -63,7 +69,9 @@ class MyApp extends StatelessWidget {
         final authProvider = Provider.of<AuthProvider>(context);
 
         if (authProvider.authStatus == AuthStatus.checking) {
-          return const Center(child: CustomLoadingSplash());
+          return const Center(
+            child: CustomLoadingSplash(),
+          );
         }
         if (authProvider.authStatus == AuthStatus.notAuthenticated) {
           return AuthLayout(child: child!);

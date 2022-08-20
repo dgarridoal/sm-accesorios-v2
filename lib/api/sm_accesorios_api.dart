@@ -6,10 +6,12 @@ class SMAccesoriosApi {
   static final Dio _dio = Dio();
 
   static void configureDio() {
-    //https://sm-accesorios-backend.herokuapp.com/api
+    // _dio.options.baseUrl = 'http://localhost:3000/api';
     _dio.options.baseUrl = 'https://sm-accesorios-backend.herokuapp.com/api';
     _dio.options.headers = {
+      // 'Accept': 'application/json, text/plain, */*',
       'x-token': LocalStorage.prefs.getString('token') ?? '',
+      // 'Content-Type': 'application/json',
     };
   }
 

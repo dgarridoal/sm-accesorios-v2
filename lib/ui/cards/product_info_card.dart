@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ProdcutInfoCard extends StatelessWidget {
-  const ProdcutInfoCard({
+class ProductInfoCard extends StatelessWidget {
+  const ProductInfoCard({
     Key? key,
     required this.title,
-    required this.count,
+    required this.icon,
     required this.price,
   }) : super(key: key);
 
   final String title;
-  final int price, count;
+  final int price;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class ProdcutInfoCard extends StatelessWidget {
               ),
             ),
           ),
-          Text('$count'),
+          Icon(icon),
         ],
       ),
     );

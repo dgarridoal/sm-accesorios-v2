@@ -67,7 +67,6 @@ class AuthProvider extends ChangeNotifier {
       SMAccesoriosApi.configureDio();
       notifyListeners();
     }).catchError((error) {
-      print(error);
       authStatus = AuthStatus.notAuthenticated;
       NotificationService.showSnackbarError(
           'Error', 'Error al iniciar sesión, vuelve a intentarlo');

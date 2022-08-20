@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
 import 'package:proyect_sm_accesorios/models/index.dart';
 import 'package:proyect_sm_accesorios/services/index.dart';
@@ -17,34 +20,40 @@ class UserProvider extends ChangeNotifier {
 
   User get user => _user;
 
-//TODO: Implementar el metodo para actualizar el usuario
-  Future<User?> updateUser(User user) async {
+  Map<String, String> userData = {
+    'password': '',
+    'confirmPassword': '',
+    'newPassword': '',
+    'confirmNewPassword': '',
+  };
+
+  Future<bool> updateUser(User user) async {
     try {
       final data = {
         'nombre': user.nombre,
         'apellido': user.apellido,
         'email': user.email,
-        'password': user.email,
+        'password': userData['password'],
+        'confirmPassword': userData['confirmPassword'],
+        'newPassword': userData['newPassword'],
       };
-      /* final data = {
-        'categoria': List<String>.from(product.categoria.map((x) => x.id)),
-        'stock': product.stock,
-        'nombre': product.nombre,
-        'descripcion': product.descripcion,
-        'precioVenta': product.precioVenta,
-        'precioCompra': product.precioCompra,
-        'fechaVencimiento': product.fechaVencimiento,
-        'id': product.id
-      };
+      final url = Uri.parse(
+          'https:sm-accesorios-backend.herokuapp.com/api/user/update/${user.id}');
 
-      final resp = await SMAccesoriosApi.httpPost('/product', data);
-      final productResponse = ProductResponse.fromMap(resp);
-      final newProduct = productResponse.product;
-      products.add(newProduct); */
-      notifyListeners();
-      // return newProduct;
+      final resp = await http.post(url, body: jsonEncode(data), headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'x-token': LocalStorage.prefs.getString('token') ?? '',
+        'Content-Type': 'application/json',
+      });
+
+      if (resp.statusCode == 200) {
+        LocalStorage.prefs.setString('user', jsonEncode(user.toJson()));
+        return true;
+      } else {
+        return true;
+      }
     } catch (e) {
-      rethrow;
+      return true;
     }
   }
 
