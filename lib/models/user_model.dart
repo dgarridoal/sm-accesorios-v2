@@ -20,7 +20,7 @@ class User {
   String id;
 
   get imgUrl =>
-      'https://sm-accesorios-backend.herokuapp.com/api/upload/products/$img';
+      'https://proyect-backend-sm-production.up.railway.app/api/upload/admin/$img';
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
 

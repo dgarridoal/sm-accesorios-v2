@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'package:proyect_sm_accesorios/services/index.dart';
 
 class SMAccesoriosApi {
@@ -7,7 +6,8 @@ class SMAccesoriosApi {
 
   static void configureDio() {
     // _dio.options.baseUrl = 'http://localhost:3000/api';
-    _dio.options.baseUrl = 'https://sm-accesorios-backend.herokuapp.com/api';
+    _dio.options.baseUrl =
+        'https://proyect-backend-sm-production.up.railway.app/api';
     _dio.options.headers = {
       // 'Accept': 'application/json, text/plain, */*',
       'x-token': LocalStorage.prefs.getString('token') ?? '',

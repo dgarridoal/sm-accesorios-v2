@@ -10,8 +10,7 @@ class StatisticsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productProvider =
-        Provider.of<ProductProvider>(context, listen: false);
+    final productProvider = context.read<ProductProvider>();
 
     return FutureBuilder(
       future: productProvider.getProdStatistics(),

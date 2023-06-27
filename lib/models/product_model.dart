@@ -30,7 +30,7 @@ class Product {
   String id;
 
   get imgUrl => !img.contains('http')
-      ? 'https://sm-accesorios-backend.herokuapp.com/api/upload/products/$img'
+      ? 'https://proyect-backend-sm-production.up.railway.app/api/upload/products/$img'
       : img;
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));

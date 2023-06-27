@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
 import 'package:proyect_sm_accesorios/models/http/index.dart';
 import 'package:proyect_sm_accesorios/models/index.dart';
@@ -52,6 +51,7 @@ class ProductProvider extends ChangeNotifier {
   }
 
   Future<void> getProdStatistics() async {
+    itemsStatistics = [];
     try {
       final resp = await SMAccesoriosApi.httpGet('/order');
       final ordersResponse = OrderResponse.fromMap(resp);
@@ -107,7 +107,7 @@ class ProductProvider extends ChangeNotifier {
   getTotalOrder() {
     int total = 0;
     for (var item in itemsStatistics) {
-      total += item.precio;
+      total = total + item.precio;
     }
     return total;
   }

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyect_sm_accesorios/models/http/index.dart';
-
 import 'package:proyect_sm_accesorios/models/index.dart';
 
 import '../services/index.dart';
@@ -62,7 +61,7 @@ class CartProvider extends ChangeNotifier {
       final orderResponse = OrderResponse.fromMap(resp); */
 
       var url = Uri.parse(
-          'https:sm-accesorios-backend.herokuapp.com/api/order/payment');
+          'https://proyect-backend-sm-production.up.railway.app/api/order/payment');
 
       final resp = await http.post(url, body: jsonEncode(data), headers: {
         'Accept': 'application/json, text/plain, */*',

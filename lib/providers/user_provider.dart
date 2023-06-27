@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:proyect_sm_accesorios/api/sm_accesorios_api.dart';
 import 'package:proyect_sm_accesorios/models/index.dart';
 import 'package:proyect_sm_accesorios/services/index.dart';
@@ -38,7 +38,7 @@ class UserProvider extends ChangeNotifier {
         'newPassword': userData['newPassword'],
       };
       final url = Uri.parse(
-          'https:sm-accesorios-backend.herokuapp.com/api/user/update/${user.id}');
+          'https://proyect-backend-sm-production.up.railway.app/api/user/update/${user.id}');
 
       final resp = await http.post(url, body: jsonEncode(data), headers: {
         'Accept': 'application/json, text/plain, */*',
